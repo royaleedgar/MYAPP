@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omni - Sign Up</title>
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 14px;
+    color: #333;
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color:  #ff5722;
+    color: white;
+    margin: 5px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color:  #ff5722;
+}
+.secondary-btn {
+        background-color: #ccc;
+        color: #333;
+    }
+
+    .secondary-btn:hover {
+        background-color: #aaa;
+    }
+
+</style>
+<body>
+    <div class="form-container">
+        <h2>Omni</h2>
+        <h3> Sign Up</h3>
+        <form action="signup_process.php" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Create Account</button>
+            <!-- Redirect to Sign-Up Page -->
+        <a href="login.html">
+            <button type="button" class="secondary-btn">Already Have an Account?</button>
+        </a>
+        </form>
+        </div>
+    </div>
+</body>
+</html>

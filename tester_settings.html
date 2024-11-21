@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - MyFeed</title>
+</head>
+<style>
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+.light-theme {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+header .user-actions .logout-btn {
+    background-color: #ff5722;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+header .user-actions .logout-btn:hover {
+    background-color: #e64a19;
+}
+
+/* Profile Container */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.profile-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-theme .profile-card {
+    background-color: #444;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-header .profile-img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.profile-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.profile-header p {
+    color: #666;
+}
+
+.dark-theme .profile-header p {
+    color: #bbb;
+}
+
+/* Settings Section */
+.settings h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+.settings label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.settings select, .settings input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.settings input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.settings button {
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.settings button:hover {
+    background-color: #e64a19;
+}
+
+/* Delete Account */
+.delete-btn {
+    background-color: #d32f2f;
+    color: #fff;
+    margin-top: 20px;
+    padding: 8px 16px;
+}
+
+.delete-btn:hover {
+    background-color: #b71c1c;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
+}
+
+</style>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Omni</div>
+        <div class="user-actions">
+            <button class="logout-btn">Logout</button>
+        </div>
+    </header>
+
+    <!-- User Profile Section -->
+    <div class="profile-container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <img src="https://via.placeholder.com/100" alt="Profile Image" class="profile-img">
+                <h2 id="user-name">John Doe</h2>
+                <p>john.doe@example.com</p>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="settings">
+                <h3>Settings</h3>
+                
+                <!-- Change User Name -->
+                <div class="change-username">
+                    <label for="username-input">Change Username:</label>
+                    <input type="text" id="username-input" placeholder="Enter new username">
+                    <button onclick="updateUsername()">Save</button>
+                </div>
+
+                <!-- Theme Selector -->
+                <div class="theme-selector">
+                    <label for="theme">Choose Theme:</label>
+                    <select id="theme" onchange="changeTheme()">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </div>
+
+                <!-- Notification Settings -->
+                <div class="notification-settings">
+                    <label for="notifications">Enable Notifications:</label>
+                    <input type="checkbox" id="notifications">
+                </div>
+
+                <!-- Language Settings -->
+                <div class="language-settings">
+                    <label for="language">Preferred Language:</label>
+                    <select id="language">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                    </select>
+                </div>
+
+                <!-- Delete Account -->
+                <div class="delete-account">
+                    <button onclick="deleteAccount()" class="delete-btn">Delete Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Omni. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Change Theme
+        function changeTheme() {
+            const theme = document.getElementById("theme").value;
+            if (theme === "dark") {
+                document.body.classList.add("dark-theme");
+                document.body.classList.remove("light-theme");
+            } else {
+                document.body.classList.add("light-theme");
+                document.body.classList.remove("dark-theme");
+            }
+            localStorage.setItem("theme", theme);
+        }
+
+        // Set default theme on load
+        document.addEventListener("DOMContentLoaded", function() {
+            const savedTheme = localStorage.getItem("theme") || "light";
+            document.getElementById("theme").value = savedTheme;
+            changeTheme();
+        });
+
+        // Update Username
+        function updateUsername() {
+            const newUsername = document.getElementById("username-input").value;
+            if (newUsername.trim()) {
+                document.getElementById("user-name").innerText = newUsername;
+                alert("Username updated successfully!");
+            } else {
+                alert("Please enter a valid username.");
+            }
+        }
+
+        // Delete Account
+        function deleteAccount() {
+            const confirmation = confirm("Are you sure you want to delete your account? This action cannot be undone.");
+            if (confirmation) {
+                alert("Account deleted successfully.");
+                // Redirect or handle account deletion logic here
+            }
+        }
+    </script>
+</body>
+</html>

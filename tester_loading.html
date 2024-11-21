@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+
+</head>
+<style>
+    .loading-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #333;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.mobius-wrapper {
+    text-align: center;
+}
+
+.mobius {
+    width: 100px;
+    height: 100px;
+    border: 10px solid transparent;
+    border-top: 10px solid #ff5722;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+        transform: rotateX(180deg) rotateY(180deg);
+    }
+    100% {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+.mobius-wrapper p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+</style>
+<body class="loading-page">
+    <div class="mobius-wrapper">
+        <div class="mobius"></div>
+        <p>Loading...</p>
+    </div>
+
+    <script>
+        // Simulate loading and redirect to login page
+        setTimeout(() => {
+            window.location.href = "login.html";
+        }, 3000); // 3 seconds delay
+    </script>
+</body>
+</html>
