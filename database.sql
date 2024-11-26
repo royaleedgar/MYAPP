@@ -12,7 +12,7 @@ CREATE TABLE users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Create user_settings table for future use
+-- Create user_settings table
 CREATE TABLE user_settings (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE user_settings (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- Add user_preferences table
+-- Create user_preferences table
 CREATE TABLE user_preferences (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE user_preferences (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- Add bookmarks table
+-- Create bookmarks table
 CREATE TABLE bookmarks (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE bookmarks (
     UNIQUE KEY unique_bookmark (user_id, article_url)
 );
 
--- Add reading history table
+-- Create reading_history table
 CREATE TABLE reading_history (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
@@ -56,4 +56,15 @@ CREATE TABLE reading_history (
     article_title TEXT NOT NULL,
     read_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Add article_summaries table
+CREATE TABLE article_summaries (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    article_url VARCHAR(512) NOT NULL,
+    summary TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    UNIQUE KEY unique_summary (user_id, article_url)
 ); 

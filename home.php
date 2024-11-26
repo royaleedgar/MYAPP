@@ -179,7 +179,15 @@ function isBookmarked($conn, $user_id, $article_url)
             <?php if ($news && isset($news['articles'])): ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <?php foreach ($news['articles'] as $article): ?>
-                        <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col">
+                        <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col cursor-pointer"
+                                 onclick="window.location.href='article.php?<?php echo http_build_query([
+                                     'url' => $article['url'],
+                                     'title' => $article['title'],
+                                     'image' => $article['urlToImage'] ?? '',
+                                     'source' => $article['source']['name'],
+                                     'description' => $article['description'],
+                                     'published' => $article['publishedAt']
+                                 ]); ?>'">
                             <div class="relative pb-[56.25%]"> <!-- 16:9 aspect ratio -->
                                 <?php if ($article['urlToImage']): ?>
                                     <img class="absolute h-full w-full object-cover"
