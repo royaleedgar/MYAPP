@@ -65,3 +65,63 @@ Omni is a modern news aggregation platform that provides personalized news feeds
    - Place project files in `C:/xampp/htdocs/MYAPP`
 
 7. Visit `http://localhost/MYAPP` in your browser
+
+## API Integration
+
+### News API
+- Used for fetching news articles
+- Supports multiple categories
+- Search functionality
+- Rate limiting handled
+
+### Google Gemini API
+- AI-powered article summarization
+- Natural language processing
+- Concise content generation
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## Troubleshooting
+
+### Common Issues
+1. Database Connection Errors
+   - Check your database credentials in `.env`
+   - Ensure MySQL service is running
+
+2. API Key Issues
+   - Verify API keys in `.env`
+   - Check API usage limits
+
+3. Permission Issues
+   - Ensure proper file permissions
+   - Check web server configuration
+
+## Security
+
+- SQL injection prevention using prepared statements
+- XSS protection through output escaping
+- CSRF protection
+- Secure password hashing
+- Environment variable protection
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact & Support
+
+- GitHub: [@royaleedgar](https://github.com/royaleedgar)
+- Project Link: [https://github.com/royaleedgar/MYAPP](https://github.com/royaleedgar/MYAPP)
+
+## Acknowledgments
+
+- [NewsAPI](https://newsapi.org/) for news data
+- [Google Gemini](https://deepmind.google/technologies/gemini/) for AI summarization
+- [Tailwind CSS](https://tailwindcss.com/) for styling
+- [Material Icons](https://fonts.google.com/icons) for icons
