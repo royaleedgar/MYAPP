@@ -1,5 +1,7 @@
 <?php
-define('NEWS_API_KEY', '56e7985e32c8436b96ba31022b838b75');
+require_once __DIR__ . '/env.php';
+
+define('NEWS_API_KEY', getenv('NEWS_API_KEY'));
 define('NEWS_API_URL', 'https://newsapi.org/v2/');
 
 class NewsAPI {
